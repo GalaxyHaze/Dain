@@ -14,7 +14,7 @@
 
 namespace fs = std::filesystem;
 
-inline std::string_view readSource() {
+inline std::stringstream readSource() {
     std::cout << "Insert your source file:\n";
     std::string src;
     std::cin >> src;
@@ -58,13 +58,14 @@ inline std::string_view readSource() {
 
     std::stringstream buffer;
     buffer << file.rdbuf();
-    std::string source = buffer.str();
+    buffer.seekp(0, std::ios::end);
 
     std::cout << "File: " << filePath.filename() << " (" << extension << ")\n";
-    std::cout << "Size: " << source.size() << " bytes\n";
-    std::cout << "Content:\n\n" << source << std::endl;
+    std::cout << "Size: " << buffer.tellp() << " bytes\n";
+    std::cout << "Content:\n\n" << buffer.str() << std::endl;
 
     file.close();
+    return buffer;
 }
 
 #endif //NOVA_FILE_H
