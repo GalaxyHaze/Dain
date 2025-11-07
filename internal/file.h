@@ -14,10 +14,11 @@
 
 namespace fs = std::filesystem;
 
-inline std::string_view readSource() {
+[[nodiscard]] inline std::string readSource() {
     std::cout << "Insert your source file:\n";
     std::string src;
     std::cin >> src;
+    std::cout << '\n';
 
     // Verifica se o arquivo existe
     fs::path filePath(src);
@@ -52,19 +53,16 @@ inline std::string_view readSource() {
     // Abre e lê o arquivo
     std::ifstream file(filePath);
     if (!file.is_open()) {
-        std::cerr << "Error: Could not open source file." << std::endl;
-        //return;
+        throw std::runtime_error("Error: Could not open source file.");
     }
 
     std::stringstream buffer;
     buffer << file.rdbuf();
     std::string source = buffer.str();
 
-    std::cout << "File: " << filePath.filename() << " (" << extension << ")\n";
-    std::cout << "Size: " << source.size() << " bytes\n";
-    std::cout << "Content:\n\n" << source << std::endl;
 
     file.close();
+    return std::move(source);
 }
 
 #endif //NOVA_FILE_H

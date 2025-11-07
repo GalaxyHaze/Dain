@@ -1,5 +1,11 @@
-#include "../internal/file.h"
+#include "../internal/core.h"
 
 int main() {
-    readSource();
+    const auto src = readSource();
+    auto Tokens = Tokenizer::tokenize(src);
+    for (const auto i : Tokens)
+    {
+        std::cout << 1;
+    }
+
 }
