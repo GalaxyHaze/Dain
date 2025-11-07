@@ -6,4 +6,5 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(Nova src/main.cpp
         internal/file.h
         internal/token.h
-        internal/tokenizer.h)
+        internal/tokenizer.h
+        internal/core.h)
