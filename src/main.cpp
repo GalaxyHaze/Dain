@@ -1,5 +1,6 @@
 #include "../internal/file.h"
 
 int main() {
-    readSource();
+    auto stream = readSource();
+
 }

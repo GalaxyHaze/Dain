@@ -14,7 +14,7 @@
 
 namespace fs = std::filesystem;
 
-inline std::stringstream readSource() {
+[[nodiscard]] inline std::stringstream readSource() {
     std::cout << "Insert your source file:\n";
     std::string src;
     std::cin >> src;
