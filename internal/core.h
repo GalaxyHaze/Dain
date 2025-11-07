@@ -1,12 +1,12 @@
 //
-// Created by dioguabo-rei-delas on 11/6/25.
+// Created by al24254 on 07/11/2025.
 //
 
 #ifndef NOVA_CORE_H
 #define NOVA_CORE_H
 
 #include "file.h"
-#include "tokens.h"
+#include "token.h"
 #include "tokenizer.h"
 
 #endif //NOVA_CORE_H
