@@ -5,67 +5,162 @@
 #ifndef NOVA_FILE_H
 #define NOVA_FILE_H
 
+#include <algorithm>
+#include <stdexcept>
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <cctype>
 #include <string>
 #include <filesystem>
 #include <vector>
 
-namespace fs = std::filesystem;
+namespace nova::file {
+    namespace fs = std::filesystem;
 
-[[nodiscard]] inline std::stringstream readSource() {
-    std::cout << "Insert your source file:\n";
-    std::string src;
-    std::cin >> src;
+    // ------------------------------------------------------------
+    inline void validateExistence(const fs::path& filePath) {
+        if (!fs::exists(filePath)) {
+            throw std::runtime_error("File does not exist: " + filePath.string());
+        }
 
-    // Verifica se o arquivo existe
-    fs::path filePath(src);
-
-    if (!fs::exists(filePath)) {
-            throw std::runtime_error("File does not exist");
-    }
-
-    // Verifica se é um arquivo regular (não diretório)
-    if (!fs::is_regular_file(filePath)) {
-        throw std::runtime_error("Error: Path is not a regular file.");
-    }
-
-    // Verifica a extensão do arquivo
-    std::string extension = filePath.extension().string();
-
-    // Lista de extensões de arquivos source suportadas
-    std::vector<std::string> validExtensions = {".nova" };
-
-    bool isValidExtension = false;
-    for (const auto& validExt : validExtensions) {
-        if (extension == validExt) {
-            isValidExtension = true;
-            break;
+        if (!fs::is_regular_file(filePath)) {
+            throw std::runtime_error("Path is not a regular file: " + filePath.string());
         }
     }
 
-    if (!isValidExtension) {
-       throw std::runtime_error("Error: Extension is not valid.");
+    // ------------------------------------------------------------
+    inline bool compareInsensitiveCase(std::string_view a, std::string_view b) {
+        return a.size() == b.size() &&  std::ranges::equal(a, b,
+            [](const char ca, const char cb) {
+                return
+                std::tolower(static_cast<unsigned char>(ca), std::locale::classic()) ==
+                    std::tolower(static_cast<unsigned char>(cb), std::locale::classic());
+        });
     }
 
-    // Abre e lê o arquivo
-    std::ifstream file(filePath);
-    if (!file.is_open()) {
-        std::cerr << "Error: Could not open source file." << std::endl;
-        //return;
+    // ------------------------------------------------------------
+    inline void validateExtension(const fs::path& filePath, const std::vector<std::string>& validExtensions) {
+        const std::string extension = filePath.extension().string();
+
+        for (const auto& ext : validExtensions) {
+            if (compareInsensitiveCase(extension, ext)) return;
+
+        }
+
+        std::string list;
+        for (const auto& ext : validExtensions) list += ext + " ";
+
+        throw std::runtime_error("\nError: Invalid extension '" + extension +
+                                 "'\nExpected one of: " + list);
+
     }
 
-    std::stringstream buffer;
-    buffer << file.rdbuf();
-    buffer.seekp(0, std::ios::end);
+    // ------------------------------------------------------------
+    [[nodiscard]] inline size_t getFileSize(const fs::path& filePath) {
+        validateExistence(filePath);
+        return fs::file_size(filePath);
+    }
 
-    std::cout << "File: " << filePath.filename() << " (" << extension << ")\n";
-    std::cout << "Size: " << buffer.tellp() << " bytes\n";
-    std::cout << "Content:\n\n" << buffer.str() << std::endl;
+    // ------------------------------------------------------------
+    [[nodiscard]] inline std::stringstream readFile(const fs::path& filePath) {
+        validateExistence(filePath);
+        if (const auto size = fs::file_size(filePath); size == 0) {
+            throw std::runtime_error("File is empty: " + filePath.string());
+        }
 
-    file.close();
-    return buffer;
+        std::ifstream file(filePath, std::ios::binary);
+        if (!file.is_open()) {
+            throw std::runtime_error("Could not open file: " + filePath.string());
+        }
+
+        std::stringstream buffer;
+        buffer << file.rdbuf();
+
+        if (file.fail() && !file.eof()) {
+            throw std::runtime_error("Failed to read file: " + filePath.string());
+        }
+
+        return buffer;
+    }
+
+    // ------------------------------------------------------------
+    inline std::string trim(std::string_view str) {
+        const auto start = std::ranges::find_if_not(str,
+                                                    [](const unsigned char c) { return std::isspace(c); });
+        const auto end = std::find_if_not(str.rbegin(), str.rend(),
+            [](const unsigned char c) { return std::isspace(c); }).base();
+        return start < end ? std::string(start, end) : "";
+    }
+
+    // ------------------------------------------------------------
+    inline void debugInfo(const fs::path& filePath, const std::stringstream& buffer, const size_t lineShown = 10) {
+        const std::string extension = filePath.extension().string();
+        const std::string content = buffer.str();
+
+        std::cout << "=== File Information ===\n";
+        std::cout << "Filename: " << filePath.filename() << "\n";
+        std::cout << "Extension: " << extension << "\n";
+        std::cout << "Size: " << content.size() << " bytes\n";
+        size_t lines = std::ranges::count(content, '\n');
+        if (!content.empty() && content.back() != '\n') ++lines;
+        std::cout << "Lines: " << lines << "\n";
+        std::cout << "Path: " << filePath << "\n";
+        std::cout << "Content Preview:\n";
+        std::cout << "----------------\n\n";
+
+        // Show first few lines for large files
+        std::istringstream contentStream(content);
+        std::string line;
+        size_t lineCount = 0;
+        while (std::getline(contentStream, line) && lineCount < lineShown) {
+            std::cout << line << "\n";
+            lineCount++;
+        }
+
+        if (lineCount < lineShown)
+            std::cout << "\n";
+        else
+            std::cout << "... (truncated)\n";
+
+        std::cout << "----------------\n" << std::endl;
+    }
+
+    // ------------------------------------------------------------
+    struct FileReadOptions {
+        bool debugEnabled = true;
+        size_t maxPreviewLines = 10;
+        bool validateExtension = true;
+        std::vector<std::string> allowedExtensions = {".nova"};
+
+        explicit FileReadOptions(const bool debug = true, const size_t lines = 10, const bool validate = true,
+                                 std::vector<std::string> extensions = {".nova"})
+            : debugEnabled(debug), maxPreviewLines(lines),
+              validateExtension(validate), allowedExtensions(std::move(extensions)) {}
+    };
+
+    // ------------------------------------------------------------
+    inline std::stringstream readSource(const FileReadOptions& options = FileReadOptions{}) {
+        std::cout << "Insert your source file:\n";
+        std::string src;
+        std::getline(std::cin, src);
+        src = trim(src);
+
+        const fs::path filePath(src);
+        validateExistence(filePath);
+
+        if (options.validateExtension) {
+            validateExtension(filePath, options.allowedExtensions);
+        }
+
+        std::stringstream buffer = readFile(filePath);
+
+        if (options.debugEnabled) {
+            debugInfo(filePath, buffer, options.maxPreviewLines);
+        }
+
+        return buffer;
+    }
 }
 
-#endif //NOVA_FILE_H
+#endif // NOVA_FILE_H

@@ -6,7 +6,7 @@
 #define NOVA_CORE_H
 
 #include "file.h"
-#include "token.h"
+#include "tokens.h"
 #include "tokenizer.h"
 
 #endif //NOVA_CORE_H
