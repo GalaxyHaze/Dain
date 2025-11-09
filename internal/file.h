@@ -34,8 +34,8 @@ namespace nova::file {
         return a.size() == b.size() &&  std::ranges::equal(a, b,
             [](const char ca, const char cb) {
                 return
-                std::tolower(static_cast<unsigned char>(ca), std::locale::classic()) ==
-                    std::tolower(static_cast<unsigned char>(cb), std::locale::classic());
+                std::tolower(static_cast<unsigned char>(ca)) ==
+                    std::tolower(static_cast<unsigned char>(cb));
         });
     }
 
@@ -45,6 +45,7 @@ namespace nova::file {
 
         for (const auto& ext : validExtensions) {
             if (compareInsensitiveCase(extension, ext)) return;
+            //if (extension == ext) return;
 
         }
 

@@ -7,11 +7,30 @@
 
 #include <cstdint>
 
+// --- Info ---
+struct Info {
+    u_short index{1};
+    u_short line{1};
+
+    //size_t operator++(int) { return index++; }
+    Info& operator++(int) { index++; return *this; }
+    Info& operator+=(const size_t offset) { index += offset; return *this; }
+    explicit operator size_t() const { return index; }
+
+    void newLine() {
+        ++line;
+        index = 1;
+    }
+};
+
 // --- Token Types ---
 enum class Token : uint8_t {
+
     String,
     Number,
     Type,
+    Identifier,
+    Modifier,
 
     Assignment,
     Equal,
@@ -41,6 +60,16 @@ enum class Token : uint8_t {
     Semicolon,
 
     Unknown // always nice to have a fallback
+};
+
+// --- Token Structure ---
+struct TokenType {
+    const std::string_view value{};
+    const Info info{};
+    const Token token = Token::Unknown;
+
+    explicit TokenType(const Token token, const std::string_view& value, const Info info)
+        : value(value), info(info), token(token) {}
 };
 
 // --- Virtual Machine / IR Instructions ---

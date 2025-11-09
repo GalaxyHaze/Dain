@@ -8,4 +8,7 @@ add_executable(Nova src/main.cpp
         internal/tokenizer.h
         internal/core.h
         internal/helpers.h
-        internal/tokens.h)
+        internal/tokens.h
+        internal/dense_map/unordered_dense_map.h
+        internal/dense_map/stl.h
+        internal/keywords.h)
