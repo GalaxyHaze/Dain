@@ -10,14 +10,22 @@ constexpr bool isNewLine(const char c)
     return (c == '\n' || c == '\r' || c == '\t');
 }
 
- constexpr bool isAlphaNum(const char c) noexcept {
+constexpr bool isAlphaNum(const char c) noexcept {
     return (c >= 'a' && c <= 'z') ||
            (c >= 'A' && c <= 'Z') ||
            (c >= '0' && c <= '9') ||
            c == '_';
 }
 
-constexpr bool isSpace(char c) noexcept {
+constexpr bool isAlpha(const char c) noexcept {
+    return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z';
+}
+
+constexpr bool isNumeric(const char c) noexcept {
+    return c >= '0' && c <= '9';
+}
+
+constexpr bool isSpace(const char c) noexcept {
     return c == ' ' || c == '\t' || c == '\n' || c == '\r';
 }
 

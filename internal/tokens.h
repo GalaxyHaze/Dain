@@ -24,6 +24,11 @@ struct Info {
         ++line;
         index = 1;
     }
+
+    void newLine(const size_t size) {
+        line += size;
+        index = 1;
+    }
 };
 
 // --- Token Types ---

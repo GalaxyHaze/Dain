@@ -142,7 +142,7 @@ namespace nova::file {
         std::cout << "Insert your source file:\n";
         std::string src;
         std::getline(std::cin, src);
-        //src = trim(src);
+        src = trim(src);
 
         const fs::path filePath(src);
         validateExistence(filePath);

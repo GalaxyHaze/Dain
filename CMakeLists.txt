@@ -12,4 +12,6 @@ add_executable(Nova src/main.cpp
         internal/dense_map/unordered_dense_map.h
         internal/dense_map/stl.h
         internal/maps.h
-        internal/debug.h)
+        internal/debug.h
+        internal/TokenizerTurbo.h
+        internal/parser.h)

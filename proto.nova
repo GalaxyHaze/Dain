@@ -1,7 +1,5 @@
-//fjejfqiofjq
-/*qdqdqw
-qdqwdqw
-qwdqwd*/
+import std.io;
 int main() public {
+    print("Hello world");
     return 0;
 }

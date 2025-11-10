@@ -115,6 +115,20 @@ public:
         tokens.emplace_back(Token::String, lexeme, info);
     }
 
+    static void processNumber(const char * current, const char * end, std::vector<TokenType>& tokens, Info info) {
+        const auto lexemeStart = current;
+        consume(info, current);
+        while (has(current, end)) {
+            if (isNumeric(*current) || *current == '.' || *current == 39 || *current == '_' ) {
+                consume(info, current);
+                continue;
+            }
+            break;
+        }
+        const auto lexeme = std::string_view(lexemeStart, static_cast<size_t>(current - lexemeStart));
+        tokens.emplace_back(Token::Number, lexeme, info);
+    }
+
     [[nodiscard]] static auto tokenize(std::string_view src) noexcept {
         std::vector<TokenType> tokens;
         tokens.reserve(src.size() / 5);
@@ -148,9 +162,14 @@ public:
             }
 
             // Identifiers / keywords
-            if (isAlphaNum(c) || c == '_') {
+            if (isAlpha(c) || c == '_') {
                 processIdentifierAndKeyword(current, end, tokens, info);
                 continue;
+            }
+
+            // Numbers
+            if (isNumeric(c)) {
+                processNumber(current, end, tokens, info);
             }
 
             // Strings
