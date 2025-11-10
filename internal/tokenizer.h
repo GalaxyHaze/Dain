@@ -115,11 +115,11 @@ public:
         tokens.emplace_back(Token::String, lexeme, info);
     }
 
-    static void processNumber(const char * current, const char * end, std::vector<TokenType>& tokens, Info info) {
+    static void processNumber(const char*& current, const char * end, std::vector<TokenType>& tokens, Info info) {
         const auto lexemeStart = current;
         consume(info, current);
         while (has(current, end)) {
-            if (isNumeric(*current) || *current == '.' || *current == 39 || *current == '_' ) {
+            if (isNumeric(*current) || *current == '.' || *current == '_' ) {
                 consume(info, current);
                 continue;
             }

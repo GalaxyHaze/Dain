@@ -6,6 +6,7 @@
 #define NOVA_TOKENS_H
 
 #include <cstdint>
+typedef unsigned short u_short;
 
 // --- Info ---
 struct Info {
