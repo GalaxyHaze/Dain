@@ -50,17 +50,29 @@ public:
     [[nodiscard]] const std::vector<Node>& getChildren() const noexcept { return children; }
     [[nodiscard]] NodeType getType() const noexcept { return type; }
     [[nodiscard]] const auto& getToken() const noexcept { return token; }
-    [[nodiscard]] auto getNext() const noexcept { return next.get(); }
+    [[nodiscard]] const auto& getNext() const noexcept { return next; }
 
     // Caso queiras processar/avaliar o nó
     Node evaluate(std::vector<Token>& tokens, size_t& pos) const {
         if (eval) return eval(tokens, pos);
         return nullptr;
     }
+
+    //static
+
 };
 
+inline void printTree(const Node &node, const size_t depth = 0) {
+    if (!node) return;
+    for (int i = 0; i < depth; ++i) std::cout << "  ";
+    std::cout << "Node(" << static_cast<int>(node->getType()) << ")\n";
+    for (const auto& child : node->getChildren()) printTree(child, depth + 1);
+    printTree(node->getNext(), depth);
+
+}
+
 // Parser simples: cria uma AST básica percorrendo os tokens
-inline Node parse(std::vector<TokenType>& tokens) {
+inline Node parse(const std::vector<TokenType>& tokens) {
     size_t position = 0;
     auto root = std::make_unique<ASTNode>(NodeType::Unknown, TokenType{Token::Unknown, " ", Info{}});
 
