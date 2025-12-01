@@ -132,7 +132,7 @@ struct PerfectKeywordHash {
 
         const uint64_t h = const_hash64(sv);
         const std::size_t idx = mix64(h ^ seed) & (table_size - 1);
-        int8_t i = table[idx];
+        const int8_t i = table[idx];
 
         if (i == -1) return TokenType::Identifier;
         if (keys[i] != sv) return TokenType::Identifier; // hash collision (very rare)
@@ -152,5 +152,6 @@ inline constexpr PerfectKeywordHash KeywordHasher{};
 constexpr TokenType lookupToken(const std::string_view sv) noexcept {
     return KeywordHasher.lookup(sv);
 }
+
 
 #endif // NOVA_KEYWORDS_H

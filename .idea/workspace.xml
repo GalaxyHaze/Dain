@@ -27,11 +27,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b87c33e-4cb7-4044-b1b5-be9815a3fb95" name="Changes" comment="Enchancing file.h system">
+    <list default="true" id="2b87c33e-4cb7-4044-b1b5-be9815a3fb95" name="Changes" comment="Enhance perfect hash keyword lookup and improve token handling">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/perfect_hash.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/tokens.h" beforeDir="false" afterPath="$PROJECT_DIR$/internal/tokens.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/tokenizer.h" beforeDir="false" afterPath="$PROJECT_DIR$/internal/tokenizer.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/tokens_map.h" beforeDir="false" afterPath="$PROJECT_DIR$/internal/tokens_map.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,6 +89,7 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
@@ -149,6 +148,7 @@
       <workItem from="1764588902240" duration="3330000" />
       <workItem from="1764592253392" duration="2393000" />
       <workItem from="1764611097529" duration="2417000" />
+      <workItem from="1764613591080" duration="638000" />
     </task>
     <task id="LOCAL-00001" summary="Enchancing file.h system">
       <option name="closed" value="true" />
@@ -198,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764592328003</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Enhance perfect hash keyword lookup and improve token handling">
+      <option name="closed" value="true" />
+      <created>1764613700862</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1764613700862</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,7 +225,8 @@
     <MESSAGE value="Improving tokenizer, implement otimizations into the maps" />
     <MESSAGE value="Parser improvements" />
     <MESSAGE value="Enchancing file.h system" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enchancing file.h system" />
+    <MESSAGE value="Enhance perfect hash keyword lookup and improve token handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhance perfect hash keyword lookup and improve token handling" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -233,5 +242,13 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
   </component>
 </project>

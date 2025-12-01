@@ -46,149 +46,170 @@ class Tokenizer {
             consume(info, current);
     }
 
-    static bool tryMatchOperator(const char*& current, const char* end,
-                                 std::vector<Token>& tokens, Info& info) noexcept {
-        // Try 2-character operators first
-        if (current + 1 < end) {
-            const std::string_view twoCharOp(current, 2);
-            if (const auto token = lookupOperator(twoCharOp); token != TokenType::Unknown) {
-                tokens.emplace_back(token, twoCharOp, info);
-                consume(info, current, 2);
-                return true;
-            }
-        }
-
-        // Try 1-character operators
-        const std::string_view oneCharOp(current, 1);
-        if (const auto token = lookupOperator(oneCharOp); token != TokenType::Unknown) {
-            tokens.emplace_back(token, oneCharOp, info);
-            consume(info, current);
-            return true;
-        }
-
-        return false;
+    struct LexError {
+        std::string message;
+        Info info;
+    };
+    static void addError(std::vector<LexError>& errors, const std::string& msg, const Info& info) noexcept {
+        errors.emplace_back(LexError{msg + std::to_string(info.line), info});
     }
 
-public:
-    static void processIdentifierAndKeyword(const char*& current, const char* end,
-                                            std::vector<Token>& tokens, Info& info) noexcept {
-        const char* const lexemeStart = current;
-
-        while (has(current, end) &&
-               (isAlphaNum(*current) || *current == '_')) {
+    // Enhanced identifier/keyword (unchanged core, but now fallback for any alnum start)
+    static void processIdentifierOrKeyword(const char*& current, const char* end,
+                                                          std::vector<Token>& tokens, Info& info) noexcept {
+        const char* start = current;
+        while (has(current, end) && (isAlphaNum(*current) || *current == '_')) {
             consume(info, current);
         }
-
-        const std::string_view lexeme(lexemeStart, static_cast<size_t>(current - lexemeStart));
-
-        if (const auto keyword = lookupKeyword(lexeme); keyword != TokenType::Unknown) {
-            tokens.emplace_back(keyword, lexeme, info);
-            return;
-        }
-
-        tokens.emplace_back(TokenType::Identifier, lexeme, info);
+        const std::string_view lexeme(start, static_cast<size_t>(current - start));
+        const TokenType type = lookupToken(lexeme);  // Constexpr magic!
+        tokens.emplace_back(type == TokenType::Unknown ? TokenType::Identifier : type, lexeme, info);
     }
 
+    // Enhanced string (escape support: \" \\ \n; unterminated collects error)
     static void processString(const char*& current, const char* end,
-                              std::vector<Token>& tokens, Info& info) noexcept {
-        const char* const lexemeStart = current;
-        consume(info, current); // skip opening quote
-        bool ended = false;
-
+                                            std::vector<Token>& tokens, std::vector<LexError>& errors,
+                                            Info& info) noexcept {
+        const char* start = current;
+        consume(info, current);  // Skip "
         while (has(current, end)) {
-            if (*current == '"') {
-                ended = true;
+            if (*current == '\\') {  // Basic escapes
                 consume(info, current);
-                break;
-            }
-
-            if (*current == '\n')
-                info.newLine();
-
-            consume(info, current);
-        }
-
-        if (!ended)
-            lexError(info, "Unterminated string at line ");
-
-        const std::string_view lexeme(lexemeStart, static_cast<size_t>(current - lexemeStart));
-        tokens.emplace_back(TokenType::String, lexeme, info);
-    }
-
-    static void processNumber(const char*& current, const char * end, std::vector<Token>& tokens, Info info) {
-        const auto lexemeStart = current;
-        consume(info, current);
-        while (has(current, end)) {
-            if (isNumeric(*current) || *current == '.' || *current == '_' ) {
-                consume(info, current);
+                if (has(current, end)) consume(info, current);
                 continue;
             }
-            break;
+            if (*current == '"') {
+                consume(info, current);
+                tokens.emplace_back(TokenType::String, std::string_view(start, current - start), info);
+                return;
+            }
+            if (*current == '\n') info.newLine();
+            consume(info, current);
         }
-        const auto lexeme = std::string_view(lexemeStart, static_cast<size_t>(current - lexemeStart));
-        tokens.emplace_back(TokenType::Number, lexeme, info);
+        addError(errors, "Unterminated string at line ", info);
+        tokens.emplace_back(TokenType::String, std::string_view(start, current - start), info);  // Partial
     }
 
+    // Enhanced number: integers, floats, suffixes (u8/i64/f32 etc.), hex(0x)/bin(0b), _ separators
+    // Creatively: Parse value at compile-time if small (for constants), but here just lexeme + infer type if suffix
+    static void processNumber(const char*& current, const char* end,
+                                            std::vector<Token>& tokens, Info& info) noexcept {
+        const char* start = current;
+        bool isFloat = false;
+        bool isHex = false, isBin = false;
+
+        if (*current == '0' && lookAhead(current, end) >= 'a' && lookAhead(current, end) <= 'z') {  // Prefix
+            char prefix = std::tolower(lookAhead(current, end));
+            if (prefix == 'x') { isHex = true; consume(info, current, 2); }
+            else if (prefix == 'b') { isBin = true; consume(info, current, 2); }
+        }
+
+        while (has(current, end)) {
+            if (*current == '.') { if (isFloat) break; isFloat = true; }  // Only one .
+            else if (*current == '_') {}  // Ignore
+            else if (!isAlphaNum(*current) || (isHex && !isxdigit(*current)) || (isBin && *current != '0' && *current != '1')) break;
+            consume(info, current);
+        }
+
+        // Suffix: match known types (longest first, via lookupToken but manual for perf)
+        const char* suffixStart = current;
+        while (has(current, end) && isAlpha(*current)) consume(info, current);
+        if (suffixStart != current) {
+            std::string_view suffix = std::string_view(suffixStart, current - suffixStart);
+            if (lookupToken(suffix) == TokenType::Type) {  // Reuse! Types are in table
+                // Enhance: Could store suffix type in Token, but for now lexeme includes it
+            } else {
+                current = suffixStart;  // Not a type suffix, rewind
+                suffix = {};
+            }
+        }
+
+        const std::string_view lexeme(start, current - start);
+        const TokenType type = isFloat ? TokenType::Float : TokenType::Number;  // Or unify, add Float if needed
+        tokens.emplace_back(type, lexeme, info);
+    }
+
+    // Removed tryMatchOperator — unified into main loop!
+
+public:
     [[nodiscard]] static auto tokenize(const std::string_view src) noexcept {
         std::vector<Token> tokens;
-        tokens.reserve(src.size() / 3);
+        std::vector<LexError> errors;  // Collect for user
+        tokens.reserve(src.size() / 4);  // Slightly better avg (accounts for numbers/strings)
         Info info{};
-
         const char* current = src.data();
         const char* end = src.data() + src.size();
 
-        while (current < end) {
+        while (has(current, end)) {
             const char c = *current;
+            info++;  // If Info tracks col, etc.
 
             // Whitespace
             if (isSpace(c)) {
-                if (c == '\n')
-                    info.newLine();
-
+                if (c == '\n') info.newLine();
                 consume(info, current);
                 continue;
             }
 
-            // Single-line comments
+            // Comments
             if (c == '/' && lookAhead(current, end) == '/') {
                 skipSingleLine(info, current, end);
                 continue;
             }
-
-            // Multi-line comments
             if (c == '/' && lookAhead(current, end) == '*') {
-                skipMultiLine(info, current, end);
+                skipMultiLine(info, current, end);  // Enhance: Collect if unterminated
+                if (current >= end) addError(errors, "Unterminated multi-line comment at line ", info);
                 continue;
             }
 
-            // Identifiers / keywords
+            // Potential keyword/operator/punct: Try longest possible prefix
+            // Creatively: Probe up to 3 chars (your longest is 3: ...), use lookupToken
+            const size_t maxLen = std::min<size_t>(3, end - current);  // Adjust if add longer ops
+            std::string_view candidate;
+            size_t matchLen = 0;
+            auto type = TokenType::Unknown;
+            for (size_t len = maxLen; len >= 1; --len) {  // Longest first!
+                candidate = std::string_view(current, len);
+                type = lookupToken(candidate);
+                if (type != TokenType::Unknown) {
+                    matchLen = len;
+                    break;
+                }
+            }
+            if (matchLen > 0) {
+                tokens.emplace_back(type, candidate, info);
+                consume(info, current, matchLen);
+                continue;
+            }
+
+            // Identifier/keyword
             if (isAlpha(c) || c == '_') {
-                processIdentifierAndKeyword(current, end, tokens, info);
+                processIdentifierOrKeyword(current, end, tokens, info);
                 continue;
             }
 
-            // Numbers
-            if (isNumeric(c)) {
+            // Number
+            if (isNumeric(c) || (c == '.' && isNumeric(lookAhead(current, end)))) {  // .5
                 processNumber(current, end, tokens, info);
+                continue;
             }
 
-            // Strings
+            // String
             if (c == '"') {
-                processString(current, end, tokens, info);
+                processString(current, end, tokens, errors, info);
                 continue;
             }
 
-            // Operators
-            if (tryMatchOperator(current, end, tokens, info)) {
-                continue;
-            }
-
-            // Unknown token
+            // Fallback unknown
+            addError(errors, "Unknown character '", info);  // + std::string(1,c)
             tokens.emplace_back(TokenType::Unknown, std::string_view(current, 1), info);
             consume(info, current);
         }
 
-        return tokens;
+        // Optional: Add EOF token
+        tokens.emplace_back(TokenType::End, std::string_view(), info);
+
+        return std::make_pair(std::move(tokens), std::move(errors));
     }
 };
 
