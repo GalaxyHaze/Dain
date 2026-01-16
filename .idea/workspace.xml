@@ -30,7 +30,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b87c33e-4cb7-4044-b1b5-be9815a3fb95" name="Changes" comment="Update on workflow release.yml">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
