@@ -3,7 +3,7 @@ name: Build and Release
 on:
   push:
     tags:
-      - 'v*' # Trigger when a tag like v1.0.0 is pushed
+      - 'v*'
 
 jobs:
   build-and-release:
@@ -28,23 +28,30 @@ jobs:
       - name: Setup CMake
         uses: jwlawson/actions-setup-cmake@v2
 
+      # NEW: Install Ninja generator (Faster and multi-config friendly)
+      - name: Install Ninja
+        uses: seanmiddleditch/gha-setup-ninja@master
+
       # 3. Configure & Build
+      # CHANGE: Added -DCMAKE_BUILD_TYPE=Release to Windows and added Ninja generator
       - name: Configure CMake
-        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+        run: cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
 
       - name: Build
         run: cmake --build build --config Release
 
       # 4. Prepare Artifacts
+      # CHANGE: Ensures directory structure consistency and proper copying
       - name: Prepare Artifacts
         shell: bash
         run: |
           mkdir -p artifacts
-          if [ "${{ matrix.os }}" == "windows-latest" ]; then
-            # Windows usually outputs in build/Release/
-            cp build/Release/Nova.exe artifacts/${{ matrix.target_name }}
+          
+          # Locate the executable safely regardless of OS
+          if [ "${{ runner.os }}" == "Windows" ]; then
+            # Using the fixed output folder from the ninja/multi-config setup
+            cp build/Nova.exe artifacts/${{ matrix.target_name }}
           else
-            # Linux/Mac usually outputs in build/
             cp build/Nova artifacts/${{ matrix.target_name }}
           fi
 
