@@ -3,3 +3,5 @@ cmake-build-debug
 cmake-build-release
 tests
 ankler
+/.github/
+/.idea/
