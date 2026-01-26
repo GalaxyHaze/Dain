@@ -1,4 +1,4 @@
-#include "internal/CLI.h"
+#include "internal/interface/CLI.h"
 
 
 int main(const int argc, const char** argv) {

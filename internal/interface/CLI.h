@@ -14,7 +14,7 @@ public:
 
     // Must be called early in main()
     static void parse(const int argc, const char** argv) {
-        // 🔥 EARLY FAILURE: no arguments beyond program name
+
         if (argc <= 1) {
             std::cerr << "Error: No input file provided.\n";
             std::cerr << "Usage: " << (argv[0] ? argv[0] : "nova") << " [OPTIONS] <input_file>\n";

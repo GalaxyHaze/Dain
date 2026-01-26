@@ -5,10 +5,10 @@
 #ifndef NOVA_CORE_H
 #define NOVA_CORE_H
 
-#include "file.h"
-#include "tokens.h"
-#include "tokenizer.h"
-#include "parser.h"
-#include "debug.h"
+#include "utils/file.h"
+#include "parse/tokens.h"
+#include "parse/tokenizer.h"
+#include "parse/parser.h"
+#include "utils/debug.h"
 
 #endif //NOVA_CORE_H

@@ -5,7 +5,7 @@
 #ifndef NOVA_DEBUG_H
 #define NOVA_DEBUG_H
 
-#include "tokens.h"
+#include "../parse/tokens.h"
 #include <vector>
 #include <iostream>
 
