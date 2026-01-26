@@ -11,4 +11,6 @@
 #include "parse/parser.h"
 #include "utils/debug.h"
 
+constexpr auto version = "v0.0-delta";
+
 #endif //NOVA_CORE_H

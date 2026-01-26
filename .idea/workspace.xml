@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="BackendCodeEditorMiscSettings">
-    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="26" type="long" />
+    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="4" type="long" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
@@ -31,23 +31,24 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b87c33e-4cb7-4044-b1b5-be9815a3fb95" name="Changes" comment="permission: write">
-      <change beforePath="$PROJECT_DIR$/.idea/Nova.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Nova.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
+    <list default="true" id="2b87c33e-4cb7-4044-b1b5-be9815a3fb95" name="Changes" comment="Folder organization">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/Nova/interface/CLI.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Nova.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Nova.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/CLI.h" beforeDir="false" afterPath="$PROJECT_DIR$/internal/interface/CLI.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core.h" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/debug.h" beforeDir="false" afterPath="$PROJECT_DIR$/internal/utils/debug.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/file.h" beforeDir="false" afterPath="$PROJECT_DIR$/internal/utils/file.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/helpers.h" beforeDir="false" afterPath="$PROJECT_DIR$/internal/utils/helpers.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/parser.h" beforeDir="false" afterPath="$PROJECT_DIR$/internal/parse/parser.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/tokenizer.h" beforeDir="false" afterPath="$PROJECT_DIR$/internal/parse/tokenizer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/tokens.h" beforeDir="false" afterPath="$PROJECT_DIR$/internal/parse/tokens.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/tokens_map.h" beforeDir="false" afterPath="$PROJECT_DIR$/internal/parse/tokens_map.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/git.ignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/core.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/interface/CLI.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/parse/parser.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/parse/parser.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/parse/tokenizer.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/parse/tokenizer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/parse/tokens.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/parse/tokens.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/parse/tokens_map.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/parse/tokens_map.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/utils/debug.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/utils/debug.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/utils/file.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/utils/file.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/utils/helpers.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/utils/helpers.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proto.nova" beforeDir="false" afterPath="$PROJECT_DIR$/tests/prototype.nova" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,30 +75,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/include/Nova/interface/CLI.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="psBWR9Pu" />
@@ -116,6 +94,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "CMake Application.Nova.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
@@ -139,7 +118,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "preferences.fileTypes",
     "settings.editor.splitter.proportion": "0.2874618",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
@@ -150,14 +129,19 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ankler" />
+      <recent name="$PROJECT_DIR$/include/Nova" />
+      <recent name="$PROJECT_DIR$/tests" />
       <recent name="$PROJECT_DIR$/internal/interface" />
       <recent name="$PROJECT_DIR$/internal/parse" />
-      <recent name="$PROJECT_DIR$/internal/utils" />
-      <recent name="$PROJECT_DIR$/internal" />
-      <recent name="$PROJECT_DIR$/internal/dense_map" />
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.Nova">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CLI11" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Nova" TARGET_NAME="CLI11" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -210,7 +194,9 @@
       <workItem from="1767700944482" duration="1118000" />
       <workItem from="1767702129421" duration="10000" />
       <workItem from="1768568017735" duration="11000" />
-      <workItem from="1769416980943" duration="821000" />
+      <workItem from="1769416980943" duration="3665000" />
+      <workItem from="1769427923699" duration="164000" />
+      <workItem from="1769429160396" duration="1034000" />
     </task>
     <task id="LOCAL-00001" summary="Enchancing file.h system">
       <option name="closed" value="true" />
@@ -356,7 +342,31 @@
       <option name="project" value="LOCAL" />
       <updated>1768565510911</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Folder organization">
+      <option name="closed" value="true" />
+      <created>1769417823063</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1769417823063</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Folder organization">
+      <option name="closed" value="true" />
+      <created>1769417908490</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1769417908490</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Folder organization">
+      <option name="closed" value="true" />
+      <created>1769418170011</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1769418170011</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -381,7 +391,8 @@
     <MESSAGE value="Update on workflow release.yml" />
     <MESSAGE value="minimum required" />
     <MESSAGE value="permission: write" />
-    <option name="LAST_COMMIT_MESSAGE" value="permission: write" />
+    <MESSAGE value="Folder organization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Folder organization" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -392,7 +403,7 @@
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/internal/core.h</url>
+          <url>file://$PROJECT_DIR$/include/Nova/core.h</url>
           <line>7</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
