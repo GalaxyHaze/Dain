@@ -36,7 +36,7 @@ add_executable(Nova
         include/Nova/interface/CLI.h
         impl/memory/arena_c_functions.c
         impl/memory/file.c
-        include/Nova/utils/file.h
+        include/Nova/utils/file_utils.h
         include/Nova/memory/bumpAllocator.h
 )
 

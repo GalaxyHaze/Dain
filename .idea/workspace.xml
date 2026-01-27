@@ -7,6 +7,7 @@
     <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="6" type="long" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/RefactoringsMru/CppRenameRefactoring/DoRenameRelatedFiles/@EntryValue" value="false" type="bool" />
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
   </component>
   <component name="CMakePresetLoader">{
@@ -31,20 +32,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b87c33e-4cb7-4044-b1b5-be9815a3fb95" name="Changes" comment="Utils restructuring">
-      <change afterPath="$PROJECT_DIR$/include/Nova/memory/arena_c_functions.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/Nova/memory/bumpAllocator.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/Nova/memory/file.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Nova.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Nova.xml" afterDir="false" />
+    <list default="true" id="2b87c33e-4cb7-4044-b1b5-be9815a3fb95" name="Changes" comment="I'm driving crazy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Nova/core.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/core.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Nova/parse/tokenizer.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/parse/tokenizer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Nova/parse/tokens.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/parse/tokens.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Nova/utils/file.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/utils/file.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Nova/memory/bumpAllocator.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/memory/bumpAllocator.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Nova/utils/file.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/utils/file_utils.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/version.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +66,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/include/Nova/interface/CLI.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/include/Nova/memory/arena_c_functions.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/include/Nova/utils/file.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/include/Nova/memory/file.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="psBWR9Pu" />
@@ -196,7 +189,7 @@
       <workItem from="1769427923699" duration="164000" />
       <workItem from="1769429160396" duration="3476000" />
       <workItem from="1769484242470" duration="5409000" />
-      <workItem from="1769490246343" duration="601000" />
+      <workItem from="1769490246343" duration="1172000" />
     </task>
     <task id="LOCAL-00001" summary="Enchancing file.h system">
       <option name="closed" value="true" />
@@ -406,7 +399,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769431086094</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="I'm driving crazy">
+      <option name="closed" value="true" />
+      <created>1769490928232</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1769490928232</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -434,7 +435,8 @@
     <MESSAGE value="Folder organization" />
     <MESSAGE value="Project restructuring" />
     <MESSAGE value="Utils restructuring" />
-    <option name="LAST_COMMIT_MESSAGE" value="Utils restructuring" />
+    <MESSAGE value="I'm driving crazy" />
+    <option name="LAST_COMMIT_MESSAGE" value="I'm driving crazy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

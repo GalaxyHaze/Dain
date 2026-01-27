@@ -1,6 +1,6 @@
 #include "include/Nova/core.h"
 #include "include/Nova/memory/bumpAllocator.h"
-#include "include/Nova/utils/file.h"
+#include "include/Nova/utils/file_utils.h"
 
 int main(const int argc, const char** argv) {
     //Nova::CoreInterfaceCommand::parse(argc, argv);

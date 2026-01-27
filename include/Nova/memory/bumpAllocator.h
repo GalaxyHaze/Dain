@@ -6,7 +6,7 @@
 #define NOVA_BUMPALLOCATOR_H
 
 #include "arena_c_functions.h"
-#include <memory>
+
 
 #include "file.h"
 

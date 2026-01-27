@@ -3,8 +3,8 @@
 #define NOVA_UTILS_FILE_UTILS_HPP
 
 #include "../memory/file.h"
-#include "../memory/arena.h"
-#include "../memory/Arena.h"
+#include "../memory/arena_c_functions.h"
+#include "../memory/bumpAllocator.h"
 #include <filesystem>
 #include <vector>
 #include <string>
