@@ -1,4 +1,4 @@
-// include/Nova/utils/file_utils.hpp
+
 #ifndef NOVA_UTILS_FILE_UTILS_HPP
 #define NOVA_UTILS_FILE_UTILS_HPP
 
@@ -29,7 +29,7 @@ namespace nova::file {
 
     inline bool compareInsensitiveCase(std::string_view a, std::string_view b) {
         return a.size() == b.size() && std::ranges::equal(a, b,
-            [](unsigned char ca, unsigned char cb) {
+            [](const unsigned char ca, const unsigned char cb) {
                 return std::tolower(ca) == std::tolower(cb);
             });
     }
@@ -120,7 +120,7 @@ namespace nova::file {
     };
 
     // CLI helper: uses Arena internally
-    inline std::pair<char*, size_t> readSource(const Arena& arena, const FileReadOptions& options = FileReadOptions{}) {
+    inline std::pair<const char*, size_t> readSource(const Arena& arena, const FileReadOptions& options = FileReadOptions{}) {
         std::cout << "Insert your source file:\n";
         std::string src;
         std::getline(std::cin, src);

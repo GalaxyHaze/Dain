@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 project(Nova)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Fetch CLI11
@@ -36,8 +36,8 @@ add_executable(Nova
         include/Nova/interface/CLI.h
         impl/memory/arena_c_functions.c
         impl/memory/file.c
-        include/Nova/utils/file_utils.h
         include/Nova/memory/bumpAllocator.h
+        include/Nova/utils/i_o_utils.h
 )
 
 

@@ -5,13 +5,13 @@
 #ifndef NOVA_CORE_H
 #define NOVA_CORE_H
 
-#include "memory/file.h"
+#include "utils/i_o_utils.h"
 #include "parse/tokens.h"
 #include "parse/tokenizer.h"
 #include "parse/parser.h"
 #include "utils/debug.h"
 
 
-static const auto version = nova::file::readFile("config.txt");
+static const auto version = "config.txt";
 
 #endif //NOVA_CORE_H
