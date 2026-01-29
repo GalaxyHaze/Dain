@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="BackendCodeEditorMiscSettings">
-    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="6" type="long" />
+    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="24" type="long" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/RefactoringsMru/CppRenameRefactoring/DoRenameRelatedFiles/@EntryValue" value="false" type="bool" />
@@ -23,25 +23,42 @@
   <component name="CMakeRunConfigurationManager">
     <generated>
       <config projectName="Nova" targetName="NovaParse" />
+      <config projectName="Nova" targetName="intrinsics_gen" />
+      <config projectName="Nova" targetName="vt_gen" />
+      <config projectName="Nova" targetName="target_parser_gen" />
+      <config projectName="Nova" targetName="acc_gen" />
+      <config projectName="Nova" targetName="omp_gen" />
       <config projectName="Nova" targetName="Nova" />
       <config projectName="Nova" targetName="CLI11" />
     </generated>
   </component>
   <component name="CMakeSettings">
     <configurations>
-      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
-      <configuration PROFILE_NAME="Release" ENABLED="true" CONFIG_NAME="Release" />
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" GENERATION_OPTIONS="-DLLVM_DIR=/usr/lib/llvm/21/lib/cmake/llvm" />
+      <configuration PROFILE_NAME="Release" ENABLED="true" CONFIG_NAME="Release" GENERATION_OPTIONS="-DLLVM_DIR=/usr/lib/llvm/21/lib/cmake/llvm" />
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b87c33e-4cb7-4044-b1b5-be9815a3fb95" name="Changes" comment="C ABI compabillity">
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Nova.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Nova.xml" afterDir="false" />
+    <list default="true" id="937c7cd9-f519-449d-aec2-d8c7e63547e5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Nova.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_01_26,_08_38_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_01_26__08_38__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Nova/memory/arena_c_functions.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/memory/arena_c_functions.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Nova/interface/CLI.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/interface/CLI.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Nova/parse/ast.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/parse/ast.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/Nova/parse/tokenizer.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/parse/tokenizer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Nova/utils/debug.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/utils/debug.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Nova/utils/helpers.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/utils/helpers.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Nova/parse/tokens.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/parse/tokens.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Nova/utils/slice.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/utils/slice.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Nova/utils/vector.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/utils/vector.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,85 +82,62 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/GalaxyHaze/Nova.git&quot;,
-    &quot;accountId&quot;: &quot;085281a7-3a8b-4f2f-a92b-59ed124a184b&quot;
+    &quot;accountId&quot;: &quot;c77b07ef-5d71-44c2-a617-9c7f8cbd5a89&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/include/Nova/interface/CLI.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/include/Nova/memory/arena_c_functions.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/include/Nova/memory/file.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/include/Nova/parse/tokenizer.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
-    <option name="directoryName" value="psBWR9Pu" />
+    <option name="directoryName" value="uvUc2C5F" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2025" />
+    <option name="minorVersion" value="3.2" />
+    <option name="productBranch" value="Classic" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
 }</component>
-  <component name="ProjectId" id="35CSrHmCnZWpSkYscGaYqRumV6s" />
+  <component name="ProjectId" id="38tLkqhyzd2MTdTzPrha2CGborD" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "CMake Application.Nova.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "RunOnceActivity.west.config.association.type.startup.service": "true",
-    "SHELLCHECK.PATH": "C:\\Users\\al24254\\AppData\\Roaming\\JetBrains\\CLion2025.3\\plugins\\Shell Script\\shellcheck.exe",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "master",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/home/diogo/CLionProjects/Nova",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.fileTypes",
-    "settings.editor.splitter.proportion": "0.2874618",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;CMake Application.Nova.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.west.config.association.type.startup.service&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/include/Nova/memory" />
-      <recent name="$PROJECT_DIR$/ankler" />
-      <recent name="$PROJECT_DIR$/include/Nova" />
-      <recent name="$PROJECT_DIR$/tests" />
-      <recent name="$PROJECT_DIR$/internal/interface" />
-    </key>
-  </component>
+}</component>
   <component name="RunManager" selected="CMake Application.Nova">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="CLI11" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Nova" TARGET_NAME="CLI11" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Nova" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-h" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Nova" TARGET_NAME="Nova" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Nova" RUN_TARGET_NAME="Nova">
+    <configuration name="Nova" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="tests/prototype.nova" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Nova" TARGET_NAME="Nova" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Nova" RUN_TARGET_NAME="Nova">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -153,308 +147,57 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="acc_gen" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Nova" TARGET_NAME="acc_gen" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="intrinsics_gen" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Nova" TARGET_NAME="intrinsics_gen" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="omp_gen" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Nova" TARGET_NAME="omp_gen" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="target_parser_gen" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Nova" TARGET_NAME="target_parser_gen" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="vt_gen" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Nova" TARGET_NAME="vt_gen" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="CMake Application.CLI11" />
+      <item itemvalue="CMake Application.acc_gen" />
+      <item itemvalue="CMake Application.intrinsics_gen" />
       <item itemvalue="CMake Application.Nova" />
       <item itemvalue="CMake Application.NovaParse" />
+      <item itemvalue="CMake Application.omp_gen" />
+      <item itemvalue="CMake Application.target_parser_gen" />
+      <item itemvalue="CMake Application.vt_gen" />
     </list>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2b87c33e-4cb7-4044-b1b5-be9815a3fb95" name="Changes" comment="" />
-      <created>1762555957548</created>
+      <changelist id="937c7cd9-f519-449d-aec2-d8c7e63547e5" name="Changes" comment="" />
+      <created>1769614066413</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1762555957548</updated>
-      <workItem from="1762555961508" duration="1377000" />
-      <workItem from="1762612763367" duration="3979000" />
-      <workItem from="1762622466328" duration="9093000" />
-      <workItem from="1762687429373" duration="2356000" />
-      <workItem from="1762690683057" duration="6317000" />
-      <workItem from="1762700401076" duration="14083000" />
-      <workItem from="1762725655450" duration="192000" />
-      <workItem from="1762726182313" duration="7320000" />
-      <workItem from="1762758442863" duration="5832000" />
-      <workItem from="1762768726729" duration="5528000" />
-      <workItem from="1763138734716" duration="117000" />
-      <workItem from="1763389071925" duration="67000" />
-      <workItem from="1763389150258" duration="5000" />
-      <workItem from="1764588902240" duration="3330000" />
-      <workItem from="1764592253392" duration="2393000" />
-      <workItem from="1764611097529" duration="2417000" />
-      <workItem from="1764613591080" duration="638000" />
-      <workItem from="1764614249555" duration="326000" />
-      <workItem from="1764618084883" duration="68000" />
-      <workItem from="1764659181234" duration="3604000" />
-      <workItem from="1764670328113" duration="142000" />
-      <workItem from="1764673830254" duration="147000" />
-      <workItem from="1764685642125" duration="4402000" />
-      <workItem from="1764762316334" duration="1541000" />
-      <workItem from="1764837201711" duration="42000" />
-      <workItem from="1764930250343" duration="5047000" />
-      <workItem from="1764939856631" duration="12000" />
-      <workItem from="1767700944482" duration="1118000" />
-      <workItem from="1767702129421" duration="10000" />
-      <workItem from="1768568017735" duration="11000" />
-      <workItem from="1769416980943" duration="3665000" />
-      <workItem from="1769427923699" duration="164000" />
-      <workItem from="1769429160396" duration="3476000" />
-      <workItem from="1769484242470" duration="5409000" />
-      <workItem from="1769490246343" duration="1198000" />
-      <workItem from="1769491479328" duration="732000" />
-      <workItem from="1769531845903" duration="2995000" />
-      <workItem from="1769535113636" duration="4572000" />
-      <workItem from="1769592626169" duration="9157000" />
+      <updated>1769614066413</updated>
+      <workItem from="1769614067766" duration="78000" />
+      <workItem from="1769638743528" duration="304000" />
+      <workItem from="1769639067264" duration="467000" />
+      <workItem from="1769639549573" duration="5818000" />
+      <workItem from="1769676948133" duration="1524000" />
+      <workItem from="1769680421648" duration="1412000" />
+      <workItem from="1769686953906" duration="1817000" />
     </task>
-    <task id="LOCAL-00001" summary="Enchancing file.h system">
-      <option name="closed" value="true" />
-      <created>1762646231989</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1762646231990</updated>
-    </task>
-    <task id="LOCAL-00002" summary="ALOT OF IMPROVEMENTS IN TOKENIZER">
-      <option name="closed" value="true" />
-      <created>1762725118437</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1762725118437</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Improving tokenizer, implement otimizations into the maps">
-      <option name="closed" value="true" />
-      <created>1762775156727</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1762775156727</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Improving tokenizer, implement otimizations into the maps">
-      <option name="closed" value="true" />
-      <created>1762785389712</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1762785389712</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Parser improvements">
-      <option name="closed" value="true" />
-      <created>1762952511113</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1762952511113</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Enchancing file.h system">
-      <option name="closed" value="true" />
-      <created>1764592328003</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1764592328003</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Enhance perfect hash keyword lookup and improve token handling">
-      <option name="closed" value="true" />
-      <created>1764613700862</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1764613700862</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Enhance tokenizer with improved error handling and support for additional token types">
-      <option name="closed" value="true" />
-      <created>1764614572469</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1764614572469</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Enhance tokenizer with improved error handling and support for additional token types">
-      <option name="closed" value="true" />
-      <created>1764660832146</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1764660832146</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Enhance tokenizer with improved error handling and support for additional token types">
-      <option name="closed" value="true" />
-      <created>1764673936042</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1764673936042</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Enhance tokenizer with improved error handling and support for additional token types">
-      <option name="closed" value="true" />
-      <created>1764762344990</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1764762344991</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Perfect hasher update">
-      <option name="closed" value="true" />
-      <created>1764766830707</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1764766830707</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Perfect hasher update">
-      <option name="closed" value="true" />
-      <created>1764767328638</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1764767328638</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Perfect hasher update">
-      <option name="closed" value="true" />
-      <created>1764837218791</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1764837218792</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Update on workflow release.yml">
-      <option name="closed" value="true" />
-      <created>1768564327284</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1768564327284</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Update on workflow release.yml">
-      <option name="closed" value="true" />
-      <created>1768564345667</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1768564345667</updated>
-    </task>
-    <task id="LOCAL-00017" summary="minimum required">
-      <option name="closed" value="true" />
-      <created>1768565061400</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1768565061400</updated>
-    </task>
-    <task id="LOCAL-00018" summary="permission: write">
-      <option name="closed" value="true" />
-      <created>1768565510911</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1768565510911</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Folder organization">
-      <option name="closed" value="true" />
-      <created>1769417823063</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1769417823063</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Folder organization">
-      <option name="closed" value="true" />
-      <created>1769417908490</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1769417908490</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Folder organization">
-      <option name="closed" value="true" />
-      <created>1769418170011</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1769418170011</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Project restructuring">
-      <option name="closed" value="true" />
-      <created>1769430265755</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1769430265755</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Project restructuring">
-      <option name="closed" value="true" />
-      <created>1769430315202</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1769430315203</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Project restructuring">
-      <option name="closed" value="true" />
-      <created>1769430380674</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1769430380674</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Project restructuring">
-      <option name="closed" value="true" />
-      <created>1769430438777</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1769430438777</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Utils restructuring">
-      <option name="closed" value="true" />
-      <created>1769431086094</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1769431086094</updated>
-    </task>
-    <task id="LOCAL-00027" summary="I'm driving crazy">
-      <option name="closed" value="true" />
-      <created>1769490928232</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1769490928232</updated>
-    </task>
-    <task id="LOCAL-00028" summary="I'm driving crazy">
-      <option name="closed" value="true" />
-      <created>1769491423662</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1769491423662</updated>
-    </task>
-    <task id="LOCAL-00029" summary="C compability headers">
-      <option name="closed" value="true" />
-      <created>1769533318358</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1769533318358</updated>
-    </task>
-    <task id="LOCAL-00030" summary="AST ABI struct rework, my suffer continue">
-      <option name="closed" value="true" />
-      <created>1769539676211</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1769539676211</updated>
-    </task>
-    <task id="LOCAL-00031" summary="C ABI compabillity">
-      <option name="closed" value="true" />
-      <created>1769596440440</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1769596440440</updated>
-    </task>
-    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -469,6 +212,7 @@
     <isAutomaticReloadCMake value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="MARK_IGNORED_AS_EXCLUDED" value="true" />
     <MESSAGE value="ALOT OF IMPROVEMENTS IN TOKENIZER" />
     <MESSAGE value="Improving tokenizer, implement otimizations into the maps" />
     <MESSAGE value="Parser improvements" />
@@ -486,29 +230,11 @@
     <MESSAGE value="C compability headers" />
     <MESSAGE value="AST ABI struct rework, my suffer continue" />
     <MESSAGE value="C ABI compabillity" />
-    <option name="LAST_COMMIT_MESSAGE" value="C ABI compabillity" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/main.cpp</url>
-          <line>2</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="C ABI compabillity FINALLY is working" />
+    <option name="LAST_COMMIT_MESSAGE" value="C ABI compabillity FINALLY is working" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
-  </component>
-  <component name="github-copilot-workspace">
-    <instructionFileLocations>
-      <option value=".github/instructions" />
-    </instructionFileLocations>
-    <promptFileLocations>
-      <option value=".github/prompts" />
-    </promptFileLocations>
   </component>
 </project>

@@ -2,7 +2,7 @@
 #ifndef NOVA_AST_AST_H
 #define NOVA_AST_AST_H
 
-#include "../utils/slice.h"
+#include "Nova/utils/slice.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -11,23 +11,22 @@ extern "C" {
     struct NovaArena;
 
     typedef enum {
-        NOVA_NODE_END = 0x0,
-        NOVA_NODE_LITERAL,
-        NOVA_NODE_BINARY_EXPRESSION,
-        NOVA_NODE_IDENTIFIER,
-        NOVA_NODE_VARIABLE_DECLARATION,
-        NOVA_NODE_FUNCTION_DECLARATION,
-        NOVA_NODE_IF_STATEMENT,
-        NOVA_NODE_WHILE_STATEMENT,
-        NOVA_NODE_RETURN_STATEMENT,
+        NOVA_NODE_END = 0x00,
+        NOVA_NODE_LITERAL = 0x01,
+        NOVA_NODE_BINARY_EXPRESSION = 0x02,
+        NOVA_NODE_IDENTIFIER = 0x03,
+        NOVA_NODE_VARIABLE_DECLARATION = 0x04,
+        NOVA_NODE_FUNCTION_DECLARATION = 0x05,
+        NOVA_NODE_IF_STATEMENT = 0x06,
+        NOVA_NODE_WHILE_STATEMENT = 0x07,
+        NOVA_NODE_RETURN_STATEMENT = 0x08,
         NOVA_NODE_UNKNOWN = 0xFF
     } NovaNodeType;
 
     typedef struct ASTNode ASTNode;
     typedef ASTNode* NovaNode;
 
-    // Public functions
-    NovaNode nova_parse(NovaTokenSlice tokens, struct NovaArena* arena);
+    NovaNode nova_parse(nova::utils::NovaTokenSlice tok, struct NovaArena* arena);
     NovaNodeType nova_node_get_type(NovaNode node);
 
 #ifdef __cplusplus

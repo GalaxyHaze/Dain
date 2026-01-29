@@ -96,14 +96,11 @@ typedef struct {
     NovaTokenType token;
 } NovaToken;
 
-    inline void newLine(NovaInfo* self) {
-        self->line += 1;
-        self->index = 1;
-    }
-    inline void newLineSize(NovaInfo* self, const size_t line) {
-    self->line += line;
-    self->index = 1;
-}
+#define NOVA_NEWLINE(info_ptr) \
+do { (info_ptr)->line += 1; (info_ptr)->index = 1; } while(0)
+
+#define NOVA_NEWLINE_SIZE(info_ptr, lines) \
+do { (info_ptr)->line += (lines); (info_ptr)->index = 1; } while(0)
 
 // --- Instruction (IR) ---
 typedef enum {

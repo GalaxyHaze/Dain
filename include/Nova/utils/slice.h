@@ -2,27 +2,24 @@
 #ifndef NOVA_UTILS_SLICE_H
 #define NOVA_UTILS_SLICE_H
 
-#include "../parse/tokens.h"
+#include "Nova/parse/tokens.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    // Generic slice: [data, data + len)
-    typedef struct {
-        void* data;
-        size_t len;
-        size_t elem_size; // for generic use
-    } NovaSlice;
-
-    // Typed helpers (optional macros)
-#define NOVA_SLICE(T, ptr, n) ((NovaSlice){ .data = (void*)(ptr), .len = (n), .elem_size = sizeof(T) })
-
-    // For tokens specifically
+    // Only expose what's needed
     typedef struct {
         const NovaToken* data;
         size_t len;
     } NovaTokenSlice;
+
+
+    typedef struct {
+        void* data;
+        size_t len;
+    } NovaSlice;
+
 
 #ifdef __cplusplus
 }

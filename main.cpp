@@ -1,6 +1,5 @@
 // main.cpp
 #include <iostream>
-#include <cstdlib>
 #include "Nova/memory/arena_c_functions.h"
 #include "Nova/utils/i_o_utils.h"        // C API: nova_load_file_to_arena
 #include "Nova/parse/tokenizer.h"   // C API: nova_tokenize
@@ -75,62 +74,10 @@ static const char* token_type_name(NovaTokenType t) {
     }
 }
 
-int main(int argc, char* argv[]) {
-    if (argc != 2) {
-        std::cerr << "Usage: " << argv[0] << " <file.nova>\n";
-        return 1;
-    }
-
-    const char* filepath = argv[1];
-
-    // 1. Create Arena
-    NovaArena* arena = nova_arena_create(64 * 1024); // 64 KiB initial block
-    if (!arena) {
-        std::cerr << "Failed to create arena\n";
-        return 1;
-    }
-
-    // 2. Load file into Arena
-    size_t file_size = 0;
-    char* source = nova_load_file_to_arena(arena, filepath, &file_size);
-    if (!source) {
-        std::cerr << "Failed to load file: " << filepath << "\n";
-        nova_arena_destroy(arena);
-        return 1;
-    }
-
-    // Ensure null-termination for safety (optional, but nice for debug prints)
-    // Note: tokenizer doesn't require it — it uses length
-    if (file_size == 0) {
-        // Handle empty file
-        source = static_cast<char*>(nova_arena_alloc(arena, 1));
-        source[0] = '\0';
-        file_size = 0;
-    }
-
-    // 3. Tokenize
-    NovaTokenSlice tokens = nova_tokenize(arena, source, file_size);
-    if (!tokens.data) {
-        std::cerr << "Tokenization failed\n";
-        nova_arena_destroy(arena);
-        return 1;
-    }
-
-    // 4. Print tokens
-    std::cout << "=== Tokens ===\n";
-    for (size_t i = 0; i < tokens.len; ++i) {
-        const NovaToken& tok = tokens.data[i];
-        std::string_view lexeme(tok.value, tok.value_len);
-
-        // Print line:col | TYPE | "lexeme"
-        std::cout << tok.info.line << ":" << tok.info.index
-                  << " | " << token_type_name(tok.token)
-                  << " | \"" << lexeme << "\"\n";
-
-        if (tok.token == NOVA_TOKEN_END) break;
-    }
-
-    // 5. Clean up (Arena owns everything)
-    nova_arena_destroy(arena);
+int main(const int argc, char* argv[]) {
+    nova::Arena buffer;
+    auto result = nova::file::readSource(buffer);
+    auto config =nova::file::readFileToArena(buffer, "config.txt");
+    std::cout << config.first << std::endl;
     return 0;
 }
