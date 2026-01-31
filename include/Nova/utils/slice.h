@@ -15,10 +15,10 @@ extern "C" {
     } NovaTokenSlice;
 
 
-    typedef struct {
+    struct NovaSlice{
         void* data;
         size_t len;
-    } NovaSlice;
+    };
 
 
 #ifdef __cplusplus

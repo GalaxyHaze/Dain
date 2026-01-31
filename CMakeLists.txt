@@ -30,10 +30,14 @@ FetchContent_MakeAvailable(unordered_dense)
 find_package(LLVM REQUIRED CONFIG)
 message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
 
-# Optional: use LLD
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fuse-ld=lld")
-set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -fuse-ld=lld")
+# Optional: specify components (adjust based on your needs)
+# llvm_map_components_to_libnames(LLVM_LIBS core support irreader bitreader all-targets)
 
+# Optional: use LLD
+if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fuse-ld=lld")
+    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -fuse-ld=lld")
+endif()
 
 # Version
 add_definitions(-DNOVA_VERSION="v0.0-alpha")
@@ -51,27 +55,27 @@ set(CORE_C_SOURCES
 set(PARSER_CPP_SOURCES
         impl/parser/tokenizer.cpp
         impl/interface/CLI.cpp
+        impl/parser/keywords.cpp
 )
 
 # Parser lib
 add_library(NovaParse SHARED ${PARSER_CPP_SOURCES})
 target_include_directories(NovaParse
         PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        PRIVATE ${LLVM_INCLUDE_DIRS}
 )
 target_link_libraries(NovaParse
         PRIVATE
-        LLVM
+        LLVM          # ← This is enough if you don't need specific components
         CLI11::CLI11
         unordered_dense::unordered_dense
 )
 
 # Executable
 add_executable(Nova main.cpp ${CORE_C_SOURCES})
-target_include_directories(Nova PRIVATE ${LLVM_INCLUDE_DIRS})
 target_link_libraries(Nova
         PRIVATE
         NovaParse
         CLI11::CLI11
         unordered_dense::unordered_dense
+        LLVM          # ← Also link LLVM to main if needed (e.g., for init functions)
 )

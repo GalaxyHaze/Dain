@@ -39,7 +39,7 @@ namespace nova {
 
         [[nodiscard]] auto get() const { return handle_.get(); }
 
-        [[nodiscard]] void* alloc(size_t size) const {
+        [[nodiscard]] void* alloc(const size_t size) const {
             return nova_arena_alloc(handle_.get(), size);
         }
 

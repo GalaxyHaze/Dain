@@ -1,53 +1,69 @@
 // nova_cli.h
 #pragma once
+
 #include <cstdint>
 
-    enum class BuildMode: uint8_t {
-        debug,
-        dev,
-        release,
-        fast,
-        test
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+    enum BuildMode : uint8_t {
+        BUILD_MODE_DEBUG,
+        BUILD_MODE_DEV,
+        BUILD_MODE_RELEASE,
+        BUILD_MODE_FAST,
+        BUILD_MODE_TEST
     };
 
     struct NovaSlice;
-    //TODO: some errors from CLI parser
-    enum class Errors: uint8_t {
 
+    enum Errors : uint8_t {
+        ERROR_NONE = 0,                // Success
+        ERROR_MISSING_INPUT_FILE,
+        ERROR_INVALID_INPUT_FILE,
+        ERROR_TOO_MANY_INPUT_FILES,
+        ERROR_INVALID_BUILD_MODE,
+        ERROR_CONFLICTING_OPTIONS,
+        ERROR_HELP_REQUESTED,
+        ERROR_VERSION_REQUESTED,
+        ERROR_OUT_OF_MEMORY,
+        ERROR_INTERNAL_ERROR
     };
 
-    struct Options{
+    struct Options {
         BuildMode mode;
         bool show_version;
-        uint32_t len;
-        const char* iFile;
+        const char* iFile;  // null if not provided
     };
 
-    BuildMode string_to_build_mode(NovaSlice* mode_str);
-    struct Result {
-        union  {
-            Options opt;
-            Errors error;
-        };
-        uint8_t success;
-    };
+    // Converts string like "release" → BUILD_MODE_RELEASE
+    // Returns BUILD_MODE_DEBUG on invalid input (or handle via Errors)
+    BuildMode string_to_build_mode(const NovaSlice* mode_str);
 
-    Result initResultSuccess(Result* dst, Options* opt);
-    Result initResultFail(Result* dst, Errors err);
-    void emplaceResultSuccess(Result* dst, Options* opt);
-    void emplaceResultFail(Result* dst, Errors err);
-    bool ok(Result* result);
+    // Result type:
+    // - If error == ERROR_NONE → options is valid
+    // - Otherwise → ignore options, check error
+    typedef struct {
+        Options options;
+        Errors error;
+    } Result;
 
-    #ifdef __cplusplus
-    class CoreInterfaceCommand {
-    public:
-        CoreInterfaceCommand() = delete;
-        CoreInterfaceCommand(const CoreInterfaceCommand&) = delete;
-        CoreInterfaceCommand& operator=(const CoreInterfaceCommand&) = delete;
+    // Helper: was parsing successful?
+    static inline bool ok(const Result* r) {
+        return r->error == ERROR_NONE;
+    }
 
-        static Result parse(int argc, const char** argv);
-    };
+#ifdef __cplusplus
+}
+#endif
 
+#ifdef __cplusplus
+class CoreInterfaceCommand {
+public:
+    CoreInterfaceCommand() = delete;
+    CoreInterfaceCommand(const CoreInterfaceCommand&) = delete;
+    CoreInterfaceCommand& operator=(const CoreInterfaceCommand&) = delete;
 
-
+    static Result parse(int argc, const char** argv);
+};
 #endif

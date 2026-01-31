@@ -26,7 +26,7 @@ extern "C" {
     typedef struct ASTNode ASTNode;
     typedef ASTNode* NovaNode;
 
-    NovaNode nova_parse(nova::utils::NovaTokenSlice tok, struct NovaArena* arena);
+    NovaNode nova_parse(NovaTokenSlice tok, NovaArena* arena);
     NovaNodeType nova_node_get_type(NovaNode node);
 
 #ifdef __cplusplus

@@ -1,10 +1,7 @@
 // include/Nova/parse/tokens.h
 #ifndef NOVA_PARSE_TOKENS_H
 #define NOVA_PARSE_TOKENS_H
-
-#include <stddef.h>
-#include <stdint.h>
-
+#include <cstddef>
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -103,6 +100,7 @@ do { (info_ptr)->line += 1; (info_ptr)->index = 1; } while(0)
 do { (info_ptr)->line += (lines); (info_ptr)->index = 1; } while(0)
 
 // --- Instruction (IR) ---
+/* Probably will be removed
 typedef enum {
     NOVA_INST_ADD,
     NOVA_INST_SUB,
@@ -113,9 +111,10 @@ typedef enum {
     NOVA_INST_EMPLACE,
     NOVA_INST_STORE
     // extend as needed
-} NovaInstruction;
+} NovaInstruction; */
 
 // --- Type System ---
+//TODO: Update existing types
 typedef enum {
     NOVA_TYPE_U8, NOVA_TYPE_U16, NOVA_TYPE_U32, NOVA_TYPE_U64, NOVA_TYPE_U128, NOVA_TYPE_U256,
     NOVA_TYPE_I8, NOVA_TYPE_I16, NOVA_TYPE_I32, NOVA_TYPE_I64, NOVA_TYPE_I128, NOVA_TYPE_I256,

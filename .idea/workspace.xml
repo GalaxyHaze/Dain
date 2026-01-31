@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="BackendCodeEditorMiscSettings">
-    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="24" type="long" />
+    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="6" type="long" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/RefactoringsMru/CppRenameRefactoring/DoRenameRelatedFiles/@EntryValue" value="false" type="bool" />
@@ -39,27 +39,21 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="937c7cd9-f519-449d-aec2-d8c7e63547e5" name="Changes" comment="">
+    <list default="true" id="937c7cd9-f519-449d-aec2-d8c7e63547e5" name="Changes" comment="ABI design update">
+      <change afterPath="$PROJECT_DIR$/include/Nova/parse/keywords.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Nova.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_01_26,_08_38_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_01_26__08_38__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/Nova/interface/CLI.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/interface/CLI.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Nova/memory/bumpAllocator.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/memory/bumpAllocator.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/Nova/parse/ast.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/parse/ast.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/Nova/parse/tokenizer.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/parse/tokenizer.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/Nova/parse/tokens.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/parse/tokens.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Nova/parse/tokens_map.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Nova/utils/debug.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/utils/debug.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Nova/utils/helpers.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/utils/helpers.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Nova/utils/i_o_utils.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/utils/i_o_utils.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/Nova/utils/slice.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/utils/slice.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Nova/utils/vector.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/utils/vector.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,6 +126,11 @@
   }
 }</component>
   <component name="RunManager" selected="CMake Application.Nova">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CLI11" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Nova" TARGET_NAME="CLI11" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -196,8 +195,19 @@
       <workItem from="1769639549573" duration="5818000" />
       <workItem from="1769676948133" duration="1524000" />
       <workItem from="1769680421648" duration="1412000" />
-      <workItem from="1769686953906" duration="1817000" />
+      <workItem from="1769686953906" duration="1883000" />
+      <workItem from="1769730592411" duration="630000" />
+      <workItem from="1769828058507" duration="3123000" />
     </task>
+    <task id="LOCAL-00001" summary="ABI design update">
+      <option name="closed" value="true" />
+      <created>1769688802249</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1769688802249</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,7 +241,8 @@
     <MESSAGE value="AST ABI struct rework, my suffer continue" />
     <MESSAGE value="C ABI compabillity" />
     <MESSAGE value="C ABI compabillity FINALLY is working" />
-    <option name="LAST_COMMIT_MESSAGE" value="C ABI compabillity FINALLY is working" />
+    <MESSAGE value="ABI design update" />
+    <option name="LAST_COMMIT_MESSAGE" value="ABI design update" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

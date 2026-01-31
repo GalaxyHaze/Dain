@@ -7,6 +7,7 @@
 #include <cstdint>
 #include <cstdio>
 #include <cstdlib>
+#include <string_view>
 
 #include "../parse/tokens.h"
 
