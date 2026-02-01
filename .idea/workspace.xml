@@ -39,21 +39,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="937c7cd9-f519-449d-aec2-d8c7e63547e5" name="Changes" comment="ABI design update">
-      <change afterPath="$PROJECT_DIR$/include/Nova/parse/keywords.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="937c7cd9-f519-449d-aec2-d8c7e63547e5" name="Changes" comment="More ABI corrections">
+      <change afterPath="$PROJECT_DIR$/include/Nova/utils/formatter.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Nova/interface/CLI.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/interface/CLI.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Nova/memory/bumpAllocator.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/memory/bumpAllocator.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Nova/parse/ast.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/parse/ast.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Nova/parse/tokenizer.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/parse/tokenizer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Nova/parse/tokens.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/parse/tokens.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Nova/parse/tokens_map.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Nova/utils/debug.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/utils/debug.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Nova/utils/helpers.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/utils/helpers.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Nova/utils/i_o_utils.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/utils/i_o_utils.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Nova/utils/slice.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Nova/utils/slice.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,10 +162,10 @@
     </configuration>
     <list>
       <item itemvalue="CMake Application.CLI11" />
+      <item itemvalue="CMake Application.NovaParse" />
+      <item itemvalue="CMake Application.Nova" />
       <item itemvalue="CMake Application.acc_gen" />
       <item itemvalue="CMake Application.intrinsics_gen" />
-      <item itemvalue="CMake Application.Nova" />
-      <item itemvalue="CMake Application.NovaParse" />
       <item itemvalue="CMake Application.omp_gen" />
       <item itemvalue="CMake Application.target_parser_gen" />
       <item itemvalue="CMake Application.vt_gen" />
@@ -197,7 +186,9 @@
       <workItem from="1769680421648" duration="1412000" />
       <workItem from="1769686953906" duration="1883000" />
       <workItem from="1769730592411" duration="630000" />
-      <workItem from="1769828058507" duration="3123000" />
+      <workItem from="1769828058507" duration="3438000" />
+      <workItem from="1769862057221" duration="227000" />
+      <workItem from="1769948754254" duration="714000" />
     </task>
     <task id="LOCAL-00001" summary="ABI design update">
       <option name="closed" value="true" />
@@ -207,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769688802249</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="More ABI corrections">
+      <option name="closed" value="true" />
+      <created>1769831496360</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1769831496360</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,7 +241,8 @@
     <MESSAGE value="C ABI compabillity" />
     <MESSAGE value="C ABI compabillity FINALLY is working" />
     <MESSAGE value="ABI design update" />
-    <option name="LAST_COMMIT_MESSAGE" value="ABI design update" />
+    <MESSAGE value="More ABI corrections" />
+    <option name="LAST_COMMIT_MESSAGE" value="More ABI corrections" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

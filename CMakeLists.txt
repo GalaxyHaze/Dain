@@ -50,6 +50,7 @@ set(CORE_C_SOURCES
         impl/memory/arena_c_functions.c
         impl/memory/file.c
         impl/utils/vector.c
+        include/Nova/utils/formatter.h
 )
 
 set(PARSER_CPP_SOURCES
