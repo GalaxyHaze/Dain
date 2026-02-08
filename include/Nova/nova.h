@@ -177,6 +177,8 @@ bool  nova_file_has_extension(const char* path, const char* ext); // case-insens
 // Load entire file into arena (returns NULL on error, sets *out_size)
 char* nova_load_file_to_arena(NovaArena* arena, const char* path, size_t* out_size);
 
+int nova_run(const int agrc, const char** argv);
+
 // ============================================================================
 // Error Handling
 // ============================================================================
