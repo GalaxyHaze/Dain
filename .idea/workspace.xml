@@ -158,6 +158,7 @@
       <workItem from="1770306298772" duration="106000" />
       <workItem from="1770534163657" duration="949000" />
       <workItem from="1770539497937" duration="845000" />
+      <workItem from="1770540387379" duration="166000" />
     </task>
     <task id="LOCAL-00001" summary="ABI design update">
       <option name="closed" value="true" />
@@ -215,7 +216,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770540268944</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="FetchUpdate">
+      <option name="closed" value="true" />
+      <created>1770540405369</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1770540405369</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
