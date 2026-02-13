@@ -120,8 +120,11 @@ typedef struct {
     size_t len;
 } NovaTokenStream;
 
+// Opaque arena handle
+typedef struct NovaArena NovaArena;
+
 // Tokenize source (allocates tokens in arena)
-NovaTokenStream nova_tokenize(void* arena, const char* source, size_t source_len);
+NovaTokenStream nova_tokenize(NovaArena* arena, const char* source, size_t source_len);
 
 // ============================================================================
 // AST System (Generic & Extensible)
@@ -179,8 +182,6 @@ struct NovaNode {
         uint64_t custom;  // Custom payload for extension nodes
     } data;
 };
-// Opaque arena handle
-typedef struct NovaArena NovaArena;
 
 // Parse token stream into AST (allocates nodes in arena)
 NovaNode* nova_parse(NovaArena* arena, NovaTokenStream tokens);
@@ -215,6 +216,7 @@ bool  nova_file_has_extension(const char* path, const char* ext); // case-insens
 char* nova_load_file_to_arena(NovaArena* arena, const char* path, size_t* out_size);
 
 int nova_run(const int agrc, const char** argv);
+NovaTokenType nova_lookup_keyword(const char* src, const size_t len);
 
 // ============================================================================
 // Error Handling
