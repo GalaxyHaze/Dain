@@ -126,7 +126,12 @@
     <configuration name="Nova" type="CMakeListConfigurationType" factoryName="CMakeListConfigurationFactory" temporary="true">
       <method v="2" />
     </configuration>
-    <configuration name="Nova" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="tests/prototype.nova" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Nova" TARGET_NAME="Nova" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Nova" RUN_TARGET_NAME="Nova">
+    <configuration name="Dain" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Dain" TARGET_NAME="Dain" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Nova" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="tests/prototype.nova" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Dain" TARGET_NAME="Nova" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Dain" RUN_TARGET_NAME="Nova">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -141,6 +146,7 @@
     </configuration>
     <list>
       <item itemvalue="CMake Application.Nova" />
+      <item itemvalue="CMake Application.Dain" />
       <item itemvalue="CMake Debug.Nova" />
       <item itemvalue="JavaScript Debug.dain-docs.html" />
     </list>
