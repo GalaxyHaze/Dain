@@ -561,6 +561,9 @@
       <div class="sidebar-item" onclick="navigate('installation')">
         <span class="sidebar-item-dot"></span> Installation
       </div>
+      <div class="sidebar-item" onclick="navigate('quickstart')">
+        <span class="sidebar-item-dot"></span> Quick Start
+      </div>
     </div>
 
     <div class="sidebar-section">
@@ -743,20 +746,28 @@
       </div>
 
       <h2>Quick Start</h2>
+      <p>Create a file <code>main.nova</code> and write your first program:</p>
+      <div class="code-block">
+        <div class="code-block-header">
+          <span class="code-block-lang">nova</span>
+          <button class="code-block-copy" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="tok-kw">import</span> std.io;
+
+<span class="tok-kw">fn</span> <span class="tok-fn">main</span>() {
+    <span class="tok-fn">println</span>(<span class="tok-str">"Hello World!"</span>);
+}</pre>
+      </div>
+      <p>Then run it:</p>
       <div class="code-block">
         <div class="code-block-header">
           <span class="code-block-lang">shell</span>
           <button class="code-block-copy" onclick="copyCode(this)">copy</button>
         </div>
-        <pre><span class="tok-cmt"># check your source for errors</span>
-<span class="tok-fn">nova</span> check main.nova
-
-<span class="tok-cmt"># build a native binary</span>
-<span class="tok-fn">nova</span> build main.nova <span class="tok-flag">-o</span> <span class="tok-path">bin/app</span>
-
-<span class="tok-cmt"># or just run it directly</span>
-<span class="tok-fn">nova</span> run main.nova</pre>
+        <pre><span class="tok-fn">nova</span> run main.nova
+<span class="tok-ok">Hello World!</span></pre>
       </div>
+      <p style="font-size:13px;margin-top:-4px"><a onclick="navigate('quickstart')" style="color:var(--accent);cursor:pointer">Full Quick Start guide →</a></p>
 
       <h2>Commands</h2>
       <div class="cmd-grid">
@@ -792,23 +803,31 @@
       </div>
       <div class="page-eyebrow">Getting Started</div>
       <h1>Installation</h1>
-      <p class="lead">Nova is currently in early development. Pre-built binaries are not yet available.</p>
+      <p class="lead">Install Nova with a single command. The installer handles everything — the ABI, the latest compiler binary, and all required dynamic libraries.</p>
 
-      <h2>Build from Source</h2>
+      <h2>Linux &amp; macOS</h2>
+      <p>Run the install script from your terminal:</p>
       <div class="code-block">
         <div class="code-block-header">
           <span class="code-block-lang">shell</span>
           <button class="code-block-copy" onclick="copyCode(this)">copy</button>
         </div>
-        <pre><span class="tok-fn">git</span> clone https://github.com/GalaxyHaze/Nova
-<span class="tok-fn">cd</span> Nova
-<span class="tok-fn">cmake</span> <span class="tok-flag">-B</span> build <span class="tok-flag">-DCMAKE_BUILD_TYPE</span>=Release
-<span class="tok-fn">cmake</span> <span class="tok-flag">--build</span> build</pre>
+        <pre><span class="tok-fn">curl</span> <span class="tok-flag">-sSL</span> https://raw.githubusercontent.com/GalaxyHaze/Nova/main/install.sh | <span class="tok-fn">sh</span></pre>
       </div>
 
-      <div class="callout callout-note">
-        <span class="callout-icon">i</span>
-        <div class="callout-body">Requires <strong>C++20</strong>, CMake 3.20+, and a recent version of Clang or GCC.</div>
+      <h2>Windows</h2>
+      <p>Run the PowerShell installer from an elevated terminal:</p>
+      <div class="code-block">
+        <div class="code-block-header">
+          <span class="code-block-lang">powershell</span>
+          <button class="code-block-copy" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="tok-fn">irm</span> https://raw.githubusercontent.com/GalaxyHaze/Nova/main/install.ps1 | <span class="tok-fn">iex</span></pre>
+      </div>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">→</span>
+        <div class="callout-body">The installer automatically fetches the latest compiler binary, the ABI layer, and all required dynamic libraries. No manual dependency management needed.</div>
       </div>
 
       <h2>Verify</h2>
@@ -820,6 +839,81 @@
         <pre><span class="tok-fn">nova</span> version
 <span class="tok-ok">Nova Programming Language</span>
 <span class="tok-ok">Version: 0.1.0-dev</span></pre>
+      </div>
+    </section>
+
+    <!-- QUICK START -->
+    <section class="page" id="page-quickstart">
+      <div class="breadcrumb">
+        <span onclick="navigate('intro')" style="cursor:pointer">docs</span>
+        <span class="breadcrumb-sep">/</span>
+        <span>quick start</span>
+      </div>
+      <div class="page-eyebrow">Getting Started</div>
+      <h1>Quick Start</h1>
+      <p class="lead">Write and run your first Nova program in under a minute.</p>
+
+      <h2>1. Create a source file</h2>
+      <p>Create a file called <code>main.nova</code> with the following content:</p>
+      <div class="code-block">
+        <div class="code-block-header">
+          <span class="code-block-lang">nova</span>
+          <button class="code-block-copy" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="tok-kw">import</span> std.io;
+
+<span class="tok-kw">fn</span> <span class="tok-fn">main</span>() {
+    <span class="tok-fn">println</span>(<span class="tok-str">"Hello World!"</span>);
+}</pre>
+      </div>
+
+      <h2>2. Run it</h2>
+      <p>Use <code>nova run</code> to compile and execute in one step:</p>
+      <div class="code-block">
+        <div class="code-block-header">
+          <span class="code-block-lang">shell</span>
+          <button class="code-block-copy" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="tok-fn">nova</span> run main.nova
+<span class="tok-ok">Hello World!</span></pre>
+      </div>
+
+      <h2>3. Or iterate faster with interpreted mode</h2>
+      <p>Skip native compilation entirely during development — the bytecode path is faster to invoke:</p>
+      <div class="code-block">
+        <div class="code-block-header">
+          <span class="code-block-lang">shell</span>
+          <button class="code-block-copy" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="tok-fn">nova</span> run <span class="tok-flag">--interpreted</span> main.nova
+<span class="tok-ok">Hello World!</span></pre>
+      </div>
+
+      <h2>4. Check for errors without building</h2>
+      <p>Hook <code>nova check</code> into your editor's save event for instant feedback:</p>
+      <div class="code-block">
+        <div class="code-block-header">
+          <span class="code-block-lang">shell</span>
+          <button class="code-block-copy" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="tok-fn">nova</span> check main.nova
+<span class="tok-ok">[ok] Check passed: main.nova</span></pre>
+      </div>
+
+      <h2>5. Build a release binary</h2>
+      <div class="code-block">
+        <div class="code-block-header">
+          <span class="code-block-lang">shell</span>
+          <button class="code-block-copy" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="tok-fn">nova</span> build main.nova <span class="tok-flag">-m</span> release <span class="tok-flag">-o</span> <span class="tok-path">bin/hello</span>
+<span class="tok-fn">./bin/hello</span>
+<span class="tok-ok">Hello World!</span></pre>
+      </div>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">→</span>
+        <div class="callout-body">Ready to grow your project? Add a <a onclick="navigate('project-toml')" style="color:var(--accent);cursor:pointer"><code>novaProject.toml</code></a> at the root and run <code>nova</code> with no arguments to build automatically.</div>
       </div>
     </section>
 
